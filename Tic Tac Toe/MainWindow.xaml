@@ -1,0 +1,95 @@
+﻿<Window x:Class="Tic_Tac_Toe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tic Tac Toe"
+        Height="550"
+        Width="850"
+        WindowState="Maximized">
+    <!-- Set WindowState to Normal or remove it -->
+
+    <Window.Resources>
+        <!-- Jump Animation -->
+        <Storyboard x:Key="JumpAnimation">
+            <DoubleAnimation
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                From="0" To="-20" Duration="0:0:0.2" AutoReverse="True" RepeatBehavior="2x"/>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Background>
+        <!-- Background Image -->
+        <ImageBrush ImageSource="Image/Holli.jpg"/>
+    </Window.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.50*"/>
+            <!-- Title Section -->
+            <RowDefinition Height="2*"/>
+            <!-- Game Grid Section -->
+            <RowDefinition Height="0.50*"/>
+            <!-- Control Section -->
+        </Grid.RowDefinitions>
+
+        <!-- Title Section -->
+        <Grid Grid.Row="0">
+            <TextBlock 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center"
+                Width="400"
+                FontFamily="Comic Sans MS Bold"
+                FontWeight="Bold"
+                Foreground="Black"
+                Text="Tic Tac Toe💀"
+                FontSize="50"
+                RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <TranslateTransform/>
+                    <!-- Required for the JumpAnimation -->
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </Grid>
+
+        <!-- Game Grid Section -->
+        <Grid x:Name="GameGrid"
+              Grid.Row="1" 
+              HorizontalAlignment="Center" 
+              VerticalAlignment="Center">
+            <!-- Game Grid will be dynamically generated here -->
+        </Grid>
+
+        <!-- Control Section -->
+        <Grid Grid.Row="2">
+            <Button Content="Home 🏠"
+                    Margin="10,0"
+                    Width="100"
+                    Height="50"
+                    FontSize="15"
+                    FontFamily="Comic Sans MS Bold"
+                    Background="Orange"
+                    Name="Home"
+                    Click="Home_Click"
+                    HorizontalAlignment="Right"/>
+            <Button Content="⬅️Back"
+                    Width="100"
+                    Height="50"
+                    FontSize="15"
+                    FontFamily="Comic Sans MS Bold"
+                    Background="Orange"
+                    Name="Back"
+                    Click="Back_Click_1"
+                    HorizontalAlignment="Left"
+                    Margin="10,0"/>
+        </Grid>
+
+        <!-- Status Text -->
+        <TextBlock x:Name="StatusText"
+                   Grid.Row="0"
+                   Text="🎃's Turn"
+                   FontSize="32"
+                   FontWeight="Bold"
+                   Foreground="Black"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>

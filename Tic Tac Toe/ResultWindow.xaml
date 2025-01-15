@@ -1,0 +1,115 @@
+﻿<Window x:Class="Tic_Tac_Toe.ResultWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Game Result"
+        Height="400"
+        Width="600"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <!-- Halloween Themed Background Image -->
+        <ImageBrush ImageSource="Image/EXITT.jpg"/>
+    </Window.Background>
+
+    <Window.Resources>
+        <!-- Button Style for Halloween Theme -->
+        <Style x:Key="ResultButton" 
+               TargetType="Button">
+            <Setter Property="Background"
+                    Value="#FF8C00"/>
+            <Setter Property="Foreground"
+                    Value="Black"/>
+            <Setter Property="Width"
+                    Value="200"/>
+            <Setter Property="Height"
+                    Value="50"/>
+            <Setter Property="FontSize"
+                    Value="20"/>
+            <Setter Property="FontFamily"
+                    Value="Segoe Script"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="0"
+                                CornerRadius="25">
+                            <ContentPresenter
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center"/>
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    Color="#8B4513" 
+                                    BlurRadius="15" 
+                                    ShadowDepth="0"/>
+                            </Border.Effect>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger
+                                Property="IsMouseOver"
+                                Value="True">
+                                <Setter 
+                                    TargetName="border"
+                                    Property="Background"
+                                    Value="#FF6347"/>
+                                <!-- Dark Red on hover -->
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border CornerRadius="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Result Text -->
+            <TextBlock x:Name="ResultText"
+                     Grid.Row="1"
+                     Text="🎃 Player X Wins! 👏"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     FontSize="48"
+                     FontFamily="Comic Sans MS Bold"
+                     Foreground="#FF6347" 
+                     TextAlignment="Center">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="#8B4513" 
+                                    BlurRadius="20" 
+                                    ShadowDepth="0"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <!-- Buttons Stack Panel -->
+            <StackPanel Grid.Row="2" 
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Center"
+                        Margin="0,40">
+                <Button Content="Play Again 🎃"
+                        Style="{StaticResource ResultButton}"
+                        Margin="10,0"
+                        Click="PlayAgain_Click"
+                        FontFamily="Comic Sans MS Bold"/>
+                <Button Content="Home 🏠"
+                        Style="{StaticResource ResultButton}"
+                        Margin="10,0"
+                        Name="Home"
+                        Click="Home_Click"                   
+                        FontFamily="Comic Sans MS Bold"/>
+                <Button Content="Exit Game ♿️"
+                         Style="{StaticResource ResultButton}"
+                         Margin="10,0"
+                         Name="Exit"
+                        Click="Exit_Click"             
+                        FontFamily="Comic Sans MS Bold"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
